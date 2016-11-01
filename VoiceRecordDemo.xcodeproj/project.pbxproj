@@ -13,6 +13,8 @@
 		B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B91AC86E1DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld */; };
 		B91AC8721DC84422000227E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8711DC84422000227E5 /* Assets.xcassets */; };
 		B91AC8751DC84422000227E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */; };
+		B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC87C1DC8642D000227E5 /* HudView.swift */; };
+		B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B91AC8711DC84422000227E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B91AC8741DC84422000227E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B91AC8761DC84422000227E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B91AC87C1DC8642D000227E5 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				B91AC8671DC84422000227E5 /* AppDelegate.swift */,
 				B91AC8691DC84422000227E5 /* ViewController.swift */,
+				B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */,
 				B91AC86B1DC84422000227E5 /* Main.storyboard */,
+				B91AC87C1DC8642D000227E5 /* HudView.swift */,
 				B91AC8711DC84422000227E5 /* Assets.xcassets */,
 				B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */,
 				B91AC8761DC84422000227E5 /* Info.plist */,
@@ -140,7 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */,
 				B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */,
+				B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */,
 				B91AC86A1DC84422000227E5 /* ViewController.swift in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
 			);
@@ -304,6 +312,7 @@
 				B91AC87B1DC84422000227E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

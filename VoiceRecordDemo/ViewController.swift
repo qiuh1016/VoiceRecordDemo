@@ -11,10 +11,11 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    var audioRecorder:AVAudioRecorder!
-    var audioPlayer:AVAudioPlayer!
+    var audioRecorder: AVAudioRecorder!
+    var audioPlayer: AVAudioPlayer!
 
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var speakerSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = urls[0] as NSURL
         let soundURL = documentDirectory.appendingPathComponent(recordingName)//将音频文件名称追加在可用路径上形成音频文件的保存路径
+        
         return soundURL
     }
 
@@ -87,7 +89,12 @@ class ViewController: UIViewController {
         if (!audioRecorder.isRecording){
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
-//                try AVAudioSession().setCategory(AVAudioSessionCategoryPlayback)
+                //切换扬声器和听筒
+                if speakerSwitch.isOn {
+                    try AVAudioSession().setCategory(AVAudioSessionCategoryPlayback)
+                } else {
+                    try AVAudioSession().setCategory(AVAudioSessionCategoryPlayAndRecord)
+                }
                 audioPlayer.play()
                 print("play!!")
             } catch {
@@ -100,39 +107,51 @@ class ViewController: UIViewController {
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
                 audioPlayer.pause()
-                
                 print("pause!!")
             } catch {
             }
         }
     }
     
+    var hudView: HudView!
 
     @IBAction func touchDown(_ sender: AnyObject) {
-        recordButton.setTitle("Recording", for: .normal)
         startRecord()
+        hudView = HudView.hudInView(view: self.view, animated: false)
+        hudView.text = "Slide up to cancel"
+        hudView.width = self.view.bounds.width * 2 / 5
     }
     
     @IBAction func touchUpInside(_ sender: AnyObject) {
-        recordButton.setTitle("Record", for: .normal)
         stopRecord()
+        hudView.hideAnimated(view: self.view, animated: false)
     }
     
     @IBAction func touchDragExit(_ sender: AnyObject) {
-        print("cancel record")
-        recordButton.setTitle("放开取消", for: .normal)
+        hudView.label.text = "Release to cancel"
+        hudView.label.backgroundColor = UIColor.red
     }
     
     @IBAction func touchDragInside(_ sender: AnyObject) {
-        print("resume record")
-        recordButton.setTitle("Recording", for: .normal)
+        hudView.label.text = "Slide up to cancel"
+        hudView.label.backgroundColor = UIColor.clear
     }
     
     @IBAction func touchUpOutside(_ sender: AnyObject) {
-        
-        print("cancel record")
-        recordButton.setTitle("Record", for: .normal)
+        hudView.hideAnimated(view: self.view, animated: false)
         stopRecord()
+        do {
+            try FileManager.default.removeItem(at: audioRecorder.url)
+        } catch {
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filesSegue" {
+            let vc = segue.destination as! FilesTableViewController
+            vc.speakerSwitchIsOn = speakerSwitch.isOn
+        }
     }
     
     
