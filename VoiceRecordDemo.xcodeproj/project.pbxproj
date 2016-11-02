@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC8671DC84422000227E5 /* AppDelegate.swift */; };
-		B91AC86A1DC84422000227E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC8691DC84422000227E5 /* ViewController.swift */; };
+		B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC8691DC84422000227E5 /* RecordViewController.swift */; };
 		B91AC86D1DC84422000227E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC86B1DC84422000227E5 /* Main.storyboard */; };
 		B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B91AC86E1DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld */; };
 		B91AC8721DC84422000227E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8711DC84422000227E5 /* Assets.xcassets */; };
 		B91AC8751DC84422000227E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */; };
 		B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC87C1DC8642D000227E5 /* HudView.swift */; };
 		B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */; };
+		B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0761DC968560071A0FC /* MyButton.swift */; };
+		B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FED71DC97EEB002CCD5B /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B91AC8641DC84422000227E5 /* VoiceRecordDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceRecordDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91AC8671DC84422000227E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B91AC8691DC84422000227E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B91AC8691DC84422000227E5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B91AC86C1DC84422000227E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B91AC86F1DC84422000227E5 /* VoiceRecordDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoiceRecordDemo.xcdatamodel; sourceTree = "<group>"; };
 		B91AC8711DC84422000227E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		B91AC8761DC84422000227E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B91AC87C1DC8642D000227E5 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTableViewController.swift; sourceTree = "<group>"; };
+		B9AFB0761DC968560071A0FC /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		B9B3FED71DC97EEB002CCD5B /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				B91AC8671DC84422000227E5 /* AppDelegate.swift */,
-				B91AC8691DC84422000227E5 /* ViewController.swift */,
+				B91AC8691DC84422000227E5 /* RecordViewController.swift */,
 				B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */,
 				B91AC86B1DC84422000227E5 /* Main.storyboard */,
 				B91AC87C1DC8642D000227E5 /* HudView.swift */,
+				B9AFB0761DC968560071A0FC /* MyButton.swift */,
+				B9B3FED71DC97EEB002CCD5B /* Functions.swift */,
 				B91AC8711DC84422000227E5 /* Assets.xcassets */,
 				B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */,
 				B91AC8761DC84422000227E5 /* Info.plist */,
@@ -149,8 +155,10 @@
 				B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */,
 				B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */,
 				B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */,
-				B91AC86A1DC84422000227E5 /* ViewController.swift in Sources */,
+				B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */,
+				B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
+				B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

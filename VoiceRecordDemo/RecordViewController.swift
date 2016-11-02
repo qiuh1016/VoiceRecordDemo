@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class RecordViewController: UIViewController {
     
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
@@ -17,18 +17,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var speakerSwitch: UISwitch!
     
+    var backColor: UIColor!
+    
+    var recordStartTime: TimeInterval!
+    var recordStopTime: TimeInterval!
+    
+    var recordCancel = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio)
+        if authStatus == .notDetermined {
+            print("未申请")
+        } else if authStatus == .denied || authStatus == .restricted{
+            print("拒绝，引导开启")
+        } else if authStatus == .authorized {
+            print("有权限")
+        }
         
-          }
+        backColor = recordButton.backgroundColor
+        
+    }
     
     func directoryURL() -> URL? {
         
         //根据时间设置存储文件名
         let currentDateTime = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "ddMMyyyyHHmmss"
+        formatter.dateFormat = "yyyyMMddHHmmss"
         let recordingName = formatter.string(from: currentDateTime) + ".caf"
         print(recordingName)
         
@@ -39,12 +56,11 @@ class ViewController: UIViewController {
         
         return soundURL
     }
-
-    @IBAction func startRecord(_ sender: AnyObject) {
-        startRecord()
-    }
     
     func startRecord() {
+        
+        recordStartTime = Date().timeIntervalSince1970
+        
         let recordSettings = [
             AVSampleRateKey : NSNumber(value: Float(44100.0)),//声音采样率
             AVFormatIDKey : NSNumber(value: Int32(kAudioFormatMPEG4AAC)),//编码格式
@@ -70,11 +86,20 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func stopRecord(_ sender: AnyObject) {
-        stopRecord()
-    }
-    
     func stopRecord() {
+        
+        recordStopTime = Date().timeIntervalSince1970
+        
+        if recordStopTime - recordStartTime < 1 && !recordCancel {
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let alert = UIAlertController(title: "提示", message: "录制时间太短，未能保存文件!", preferredStyle: .alert)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            
+            
+        }
+        
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         do {
@@ -82,6 +107,26 @@ class ViewController: UIViewController {
             print("stop!!")
         } catch {
         }
+        
+        if recordStopTime - recordStartTime < 1 && !recordCancel {
+            do {
+                try FileManager.default.removeItem(at: audioRecorder.url)
+            } catch {
+            }
+        }
+        
+//        if recordStopTime - recordStartTime < 1 && !recordCancel {
+//            
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            let alert = UIAlertController(title: "提示", message: "录制时间太短，未能保存文件!", preferredStyle: .alert)
+//            alert.addAction(okAction)
+//            present(alert, animated: true, completion: nil)
+//            
+//            do {
+//                try FileManager.default.removeItem(at: audioRecorder.url)
+//            } catch {
+//            }
+//        }
 
     }
     
@@ -116,34 +161,56 @@ class ViewController: UIViewController {
     var hudView: HudView!
 
     @IBAction func touchDown(_ sender: AnyObject) {
-        startRecord()
+        
         hudView = HudView.hudInView(view: self.view, animated: false)
         hudView.text = "Slide up to cancel"
         hudView.width = self.view.bounds.width * 2 / 5
+        
+        recordButton.backgroundColor = UIColor.lightGray
+        
+//        startRecord()
+        Thread(target: self, selector: #selector(RecordViewController.startRecord), object: nil).start()
     }
     
     @IBAction func touchUpInside(_ sender: AnyObject) {
-        stopRecord()
+        
+        
+        
         hudView.hideAnimated(view: self.view, animated: false)
+        
+        recordButton.backgroundColor = backColor
+        
+//        stopRecord()
+        recordCancel = false
+        Thread(target: self, selector: #selector(RecordViewController.stopRecord), object: nil).start()
     }
     
     @IBAction func touchDragExit(_ sender: AnyObject) {
         hudView.label.text = "Release to cancel"
+        hudView.imageView.image = UIImage(named: "recall")
         hudView.label.backgroundColor = UIColor.red
     }
     
     @IBAction func touchDragInside(_ sender: AnyObject) {
         hudView.label.text = "Slide up to cancel"
+        hudView.imageView.image = UIImage(named: "record")
         hudView.label.backgroundColor = UIColor.clear
     }
     
     @IBAction func touchUpOutside(_ sender: AnyObject) {
         hudView.hideAnimated(view: self.view, animated: false)
-        stopRecord()
+        
+        recordButton.backgroundColor = backColor
+        
+        recordCancel = true
+        Thread(target: self, selector: #selector(RecordViewController.stopRecord), object: nil).start()
+        
         do {
             try FileManager.default.removeItem(at: audioRecorder.url)
         } catch {
         }
+        
+        
     }
     
     

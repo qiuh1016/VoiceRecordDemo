@@ -15,6 +15,8 @@ class FilesTableViewController: UITableViewController {
     var audioPlayer: AVAudioPlayer!
     
     var speakerSwitchIsOn = true
+    
+    var noDataLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +25,24 @@ class FilesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.tableFooterView = UIView()
+        
+        noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+        noDataLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        noDataLabel.text = "NO DATA"
+        noDataLabel.backgroundColor = UIColor.lightGray
+        noDataLabel.textColor = UIColor.darkGray
+        noDataLabel.textAlignment = .center
         
         let fileManager = FileManager.default
         let mydir1 = NSHomeDirectory() + "/Documents"
         fileArray = fileManager.subpaths(atPath: mydir1)
         print("files: \(fileArray)")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,8 +53,10 @@ class FilesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if let fileArray = fileArray {
+//            noDataLabel.removeFromSuperview()
             return fileArray.count
         } else {
+//            tableView.superview?.addSubview(noDataLabel)
             return 0
         }
     }
@@ -56,6 +65,8 @@ class FilesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = fileArray?[indexPath.row]
+        cell.textLabel?.textColor = UIColor.darkGray
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return cell
     }
     

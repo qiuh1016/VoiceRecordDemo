@@ -4,6 +4,7 @@ class HudView: UIView {
     var text = ""
     let activity = UIActivityIndicatorView()
     var label: UILabel!
+    var imageView: UIImageView!
     var width: CGFloat?
   
     class func hudInView(view: UIView, animated: Bool) -> HudView {
@@ -40,7 +41,10 @@ class HudView: UIView {
         //进度指示器
         activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         activity.frame = CGRect(x: (center.x - 10), y: (center.y - 10 - boxHeight / 8), width: 20, height: 20)
-        self.addSubview(activity)
+//        self.addSubview(activity)
+        
+        
+        
         
         //文字
         let attribs = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.white ]
@@ -58,6 +62,14 @@ class HudView: UIView {
         label.layer.cornerRadius = textSize.height / 4
         label.layer.masksToBounds = true
         self.addSubview(label)
+        
+        
+        //image view
+        let imageWidth = (boxWidth - labelSpace * 2 - textSize.height) / 2
+        imageView = UIImageView(frame: CGRect(x: center.x - imageWidth / 2, y: center.y - labelSpace - textSize.height / 2 - imageWidth / 2, width: imageWidth, height: imageWidth))
+        imageView.image = UIImage(named: "record")
+        imageView.contentMode = .scaleAspectFill
+        self.addSubview(imageView)
     }
       
     func showAnimated(animated: Bool) {
