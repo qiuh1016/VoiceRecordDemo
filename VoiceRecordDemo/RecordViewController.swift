@@ -9,7 +9,9 @@
 import UIKit
 import AVFoundation
 
-class RecordViewController: UIViewController {
+private let kMinRecordTime = 0.5
+
+class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
@@ -37,6 +39,7 @@ class RecordViewController: UIViewController {
         }
         
         backColor = recordButton.backgroundColor
+        recordButton.setTitleColor(UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.6), for: .normal)
         
     }
     
@@ -84,13 +87,14 @@ class RecordViewController: UIViewController {
             } catch {
             }
         }
+        
     }
     
     func stopRecord() {
         
         recordStopTime = Date().timeIntervalSince1970
         
-        if recordStopTime - recordStartTime < 1 && !recordCancel {
+        if recordStopTime - recordStartTime < kMinRecordTime && !recordCancel {
             
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             let alert = UIAlertController(title: "提示", message: "录制时间太短，未能保存文件!", preferredStyle: .alert)
@@ -108,11 +112,12 @@ class RecordViewController: UIViewController {
         } catch {
         }
         
-        if recordStopTime - recordStartTime < 1 && !recordCancel {
-            do {
-                try FileManager.default.removeItem(at: audioRecorder.url)
-            } catch {
-            }
+        if recordStopTime - recordStartTime < kMinRecordTime && !recordCancel {
+//            do {
+//                try FileManager.default.removeItem(at: audioRecorder.url)
+//            } catch {
+//            }
+            audioRecorder.deleteRecording()
         }
         
 //        if recordStopTime - recordStartTime < 1 && !recordCancel {
@@ -166,7 +171,7 @@ class RecordViewController: UIViewController {
         hudView.text = "Slide up to cancel"
         hudView.width = self.view.bounds.width * 2 / 5
         
-        recordButton.backgroundColor = UIColor.lightGray
+        recordButton.backgroundColor = UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.1)
         
 //        startRecord()
         Thread(target: self, selector: #selector(RecordViewController.startRecord), object: nil).start()
@@ -187,13 +192,13 @@ class RecordViewController: UIViewController {
     
     @IBAction func touchDragExit(_ sender: AnyObject) {
         hudView.label.text = "Release to cancel"
-        hudView.imageView.image = UIImage(named: "recall")
-        hudView.label.backgroundColor = UIColor.red
+        hudView.imageView.image = UIImage(named: "recall_2")
+        hudView.label.backgroundColor = UIColor.colorFromRGB(rgbValue: 0xDF102A, alpha: 0.7)
     }
     
     @IBAction func touchDragInside(_ sender: AnyObject) {
         hudView.label.text = "Slide up to cancel"
-        hudView.imageView.image = UIImage(named: "record")
+        hudView.imageView.image = UIImage(named: "recordNoVolume")
         hudView.label.backgroundColor = UIColor.clear
     }
     

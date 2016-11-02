@@ -56,7 +56,7 @@ class HudView: UIView {
         
         label = UILabel(frame: CGRect(x: center.x - boxWidth / 2 + labelSpace, y: center.y + boxHeight / 2 - labelSpace - textSize.height - labelAddHeight, width: boxWidth - labelSpace * 2, height: textSize.height + labelAddHeight))
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.colorFromRGB(rgbValue: 0xFFFFFF, alpha: 0.9)
         label.textAlignment = .center
         label.text = text
         label.layer.cornerRadius = textSize.height / 4
@@ -65,9 +65,9 @@ class HudView: UIView {
         
         
         //image view
-        let imageWidth = (boxWidth - labelSpace * 2 - textSize.height) / 2
-        imageView = UIImageView(frame: CGRect(x: center.x - imageWidth / 2, y: center.y - labelSpace - textSize.height / 2 - imageWidth / 2, width: imageWidth, height: imageWidth))
-        imageView.image = UIImage(named: "record")
+        let imageWidth = (boxWidth - labelSpace * 2 - textSize.height) * 3 / 5
+        imageView = UIImageView(frame: CGRect(x: center.x - imageWidth / 2, y: center.y - textSize.height / 2 - imageWidth / 2, width: imageWidth, height: imageWidth))
+        imageView.image = UIImage(named: "recordNoVolume")
         imageView.contentMode = .scaleAspectFill
         self.addSubview(imageView)
     }

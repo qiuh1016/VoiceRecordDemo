@@ -18,7 +18,7 @@ class MyButton: UIButton {
         // Drawing code
         self.layer.cornerRadius = rect.height / 5
         
-        self.layer.borderColor = UIColor.blue.cgColor
+        self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1 / 2
         
         self.layer.masksToBounds = true

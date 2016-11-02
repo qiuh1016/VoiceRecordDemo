@@ -89,6 +89,8 @@ class FilesTableViewController: UITableViewController {
                 try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
             }
             audioPlayer.play()
+//            let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(FilesTableViewController.printVolume), userInfo: nil, repeats: true)
+//            timer.fire()
             print("play!!")
         } catch {
         }
@@ -100,6 +102,10 @@ class FilesTableViewController: UITableViewController {
             try FileManager.default.removeItem(at: audioUrl)
         } catch {
         }
+    }
+    
+    func printVolume() {
+        print(audioPlayer.volume)
     }
 
     /*
