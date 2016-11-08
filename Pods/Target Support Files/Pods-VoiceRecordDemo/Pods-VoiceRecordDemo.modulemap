@@ -1,0 +1,6 @@
+framework module Pods_VoiceRecordDemo {
+  umbrella header "Pods-VoiceRecordDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

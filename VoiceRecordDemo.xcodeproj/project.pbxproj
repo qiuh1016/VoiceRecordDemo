@@ -14,12 +14,18 @@
 		B91AC8721DC84422000227E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8711DC84422000227E5 /* Assets.xcassets */; };
 		B91AC8751DC84422000227E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */; };
 		B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC87C1DC8642D000227E5 /* HudView.swift */; };
+		B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97160021DCB05F500CCA7B7 /* SocketViewController.swift */; };
+		B97160051DCB0A1800CCA7B7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B97160041DCB0A1800CCA7B7 /* Podfile */; };
 		B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */; };
 		B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0761DC968560071A0FC /* MyButton.swift */; };
 		B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3FED71DC97EEB002CCD5B /* Functions.swift */; };
+		BA95AD0EDE070FC21881AFE8 /* Pods_VoiceRecordDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E506B6F57E815B42E6BCBFF /* Pods_VoiceRecordDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E506B6F57E815B42E6BCBFF /* Pods_VoiceRecordDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceRecordDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36E99621A1660CE5900AE064 /* Pods-VoiceRecordDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceRecordDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5EC5641103F4EAD230C375BF /* Pods-VoiceRecordDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceRecordDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B91AC8641DC84422000227E5 /* VoiceRecordDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceRecordDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91AC8671DC84422000227E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91AC8691DC84422000227E5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +35,9 @@
 		B91AC8741DC84422000227E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B91AC8761DC84422000227E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B91AC87C1DC8642D000227E5 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		B96DED9A1DCB11030032924A /* VoiceRecordDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VoiceRecordDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B97160021DCB05F500CCA7B7 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketViewController.swift; sourceTree = "<group>"; };
+		B97160041DCB0A1800CCA7B7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTableViewController.swift; sourceTree = "<group>"; };
 		B9AFB0761DC968560071A0FC /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		B9B3FED71DC97EEB002CCD5B /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -39,17 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA95AD0EDE070FC21881AFE8 /* Pods_VoiceRecordDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18825009D88434C0A50D55F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EC5641103F4EAD230C375BF /* Pods-VoiceRecordDemo.debug.xcconfig */,
+				36E99621A1660CE5900AE064 /* Pods-VoiceRecordDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B91AC85B1DC84422000227E5 = {
 			isa = PBXGroup;
 			children = (
 				B91AC8661DC84422000227E5 /* VoiceRecordDemo */,
 				B91AC8651DC84422000227E5 /* Products */,
+				18825009D88434C0A50D55F0 /* Pods */,
+				C767CB42459495D969E49C16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +88,7 @@
 				B91AC8671DC84422000227E5 /* AppDelegate.swift */,
 				B91AC8691DC84422000227E5 /* RecordViewController.swift */,
 				B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */,
+				B97160021DCB05F500CCA7B7 /* SocketViewController.swift */,
 				B91AC86B1DC84422000227E5 /* Main.storyboard */,
 				B91AC87C1DC8642D000227E5 /* HudView.swift */,
 				B9AFB0761DC968560071A0FC /* MyButton.swift */,
@@ -75,8 +97,18 @@
 				B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */,
 				B91AC8761DC84422000227E5 /* Info.plist */,
 				B91AC86E1DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld */,
+				B97160041DCB0A1800CCA7B7 /* Podfile */,
+				B96DED9A1DCB11030032924A /* VoiceRecordDemo-Bridging-Header.h */,
 			);
 			path = VoiceRecordDemo;
+			sourceTree = "<group>";
+		};
+		C767CB42459495D969E49C16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E506B6F57E815B42E6BCBFF /* Pods_VoiceRecordDemo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +118,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B91AC8791DC84422000227E5 /* Build configuration list for PBXNativeTarget "VoiceRecordDemo" */;
 			buildPhases = (
+				30A1984DBED1595A48BD06AE /* [CP] Check Pods Manifest.lock */,
 				B91AC8601DC84422000227E5 /* Sources */,
 				B91AC8611DC84422000227E5 /* Frameworks */,
 				B91AC8621DC84422000227E5 /* Resources */,
+				DD52D71E2D77D3584452B292 /* [CP] Embed Pods Frameworks */,
+				B854B81877F022EC71A1442F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -112,6 +147,7 @@
 					B91AC8631DC84422000227E5 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = GN7256EV7F;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -141,11 +177,60 @@
 			files = (
 				B91AC8751DC84422000227E5 /* LaunchScreen.storyboard in Resources */,
 				B91AC8721DC84422000227E5 /* Assets.xcassets in Resources */,
+				B97160051DCB0A1800CCA7B7 /* Podfile in Resources */,
 				B91AC86D1DC84422000227E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30A1984DBED1595A48BD06AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B854B81877F022EC71A1442F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD52D71E2D77D3584452B292 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B91AC8601DC84422000227E5 /* Sources */ = {
@@ -157,6 +242,7 @@
 				B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */,
 				B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */,
 				B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */,
+				B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
 				B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */,
 			);
@@ -277,26 +363,33 @@
 		};
 		B91AC87A1DC84422000227E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EC5641103F4EAD230C375BF /* Pods-VoiceRecordDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GN7256EV7F;
 				INFOPLIST_FILE = VoiceRecordDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CETCME.VoiceRecordDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VoiceRecordDemo/VoiceRecordDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B91AC87B1DC84422000227E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E99621A1660CE5900AE064 /* Pods-VoiceRecordDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GN7256EV7F;
 				INFOPLIST_FILE = VoiceRecordDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CETCME.VoiceRecordDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VoiceRecordDemo/VoiceRecordDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
