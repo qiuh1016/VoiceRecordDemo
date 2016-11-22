@@ -19,6 +19,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var speakerSwitch: UISwitch!
     
+    @IBOutlet weak var talkButton: UIButton!
+    @IBOutlet weak var talkWave: UIImageView!
+    
     var backColor: UIColor!
     
     var recordStartTime: TimeInterval!
@@ -227,6 +230,34 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     
+    
+    
+    @IBAction func talkButtonTapped(_ sender: AnyObject) {
+        if defaultTransform != nil {
+            self.talkWave.transform = defaultTransform!
+        }
+    }
+    
+    var defaultTransform: CGAffineTransform?
+    
+    @IBAction func talkButtonTouchDown(_ sender: AnyObject) {
+        defaultTransform = self.talkWave.transform
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.talkWave.transform = self.talkWave.transform.scaledBy(x: 5.3, y: 5.3)
+            }, completion: { Void in
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                    self.talkWave.transform = self.talkWave.transform.scaledBy(x: 0.6, y: 0.6)
+                    }, completion: { Void in
+                        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                            self.talkWave.transform = self.talkWave.transform.scaledBy(x: 1.6, y: 1.6)
+                            }, completion: { Void in
+                                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                                    self.talkWave.transform = self.defaultTransform!
+                                    }, completion: nil)
+                        })
+                })
+        })
+    }
 
 
 }

@@ -46,7 +46,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndZ-Vm-jD8" customClass="MyButton" customModule="VoiceRecordDemo" customModuleProvider="target">
-                                <frame key="frameInset" minX="16" minY="612" width="343" height="35"/>
+                                <frame key="frameInset" minX="16" minY="391" width="343" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Hold to Talk">
@@ -58,6 +58,19 @@
                                     <action selector="touchDragInside:" destination="BYZ-38-t0r" eventType="touchDragInside" id="uBJ-K8-IEd"/>
                                     <action selector="touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mRj-W8-8Ge"/>
                                     <action selector="touchUpOutside:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="Ta6-lq-J6h"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="talk_wave" translatesAutoresizingMaskIntoConstraints="NO" id="dZ9-EC-Ivz">
+                                <frame key="frameInset" minX="157" minY="583" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-cT-Ffm">
+                                <frame key="frameInset" minX="153" minY="579" width="68" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="talk_button"/>
+                                <connections>
+                                    <action selector="talkButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GCm-Xx-lmL"/>
+                                    <action selector="talkButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="FVR-uw-q3j"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,6 +86,8 @@
                     <connections>
                         <outlet property="recordButton" destination="ndZ-Vm-jD8" id="gJw-zL-oW1"/>
                         <outlet property="speakerSwitch" destination="RO3-tx-iPT" id="fgZ-E2-qRG"/>
+                        <outlet property="talkButton" destination="Bp9-cT-Ffm" id="d62-k7-0ru"/>
+                        <outlet property="talkWave" destination="dZ9-EC-Ivz" id="kZo-vU-Eyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -92,11 +107,11 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kop-7s-X3S" id="Tiu-xK-gd4">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kCI-47-qiJ">
-                                            <frame key="frameInset" minX="15" width="345" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -178,4 +193,8 @@
             <point key="canvasLocation" x="32.799999999999997" y="757.87106446776613"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="talk_button" width="68" height="68"/>
+        <image name="talk_wave" width="39" height="39"/>
+    </resources>
 </document>
