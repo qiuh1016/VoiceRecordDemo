@@ -29,6 +29,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     var recordCancel = false
     
+    var audioRecognizer = ARAudioRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,6 +46,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         backColor = recordButton.backgroundColor
         recordButton.setTitleColor(UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.6), for: .normal)
         
+        audioRecognizer = ARAudioRecognizer.init(sensitivity: 0.7, frequency: 0.03)
+        audioRecognizer.delegate = self
+        
+        defaultTransform = self.talkWave.transform
     }
     
     func directoryURL() -> URL? {
@@ -90,6 +96,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             } catch {
             }
         }
+
         
     }
     
@@ -230,8 +237,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     
-    
-    
     @IBAction func talkButtonTapped(_ sender: AnyObject) {
         if defaultTransform != nil {
             self.talkWave.transform = defaultTransform!
@@ -241,7 +246,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var defaultTransform: CGAffineTransform?
     
     @IBAction func talkButtonTouchDown(_ sender: AnyObject) {
-        defaultTransform = self.talkWave.transform
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
             self.talkWave.transform = self.talkWave.transform.scaledBy(x: 5.3, y: 5.3)
             }, completion: { Void in
@@ -259,6 +263,58 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         })
     }
 
+    
+    
+    
 
+}
+
+extension RecordViewController: ARAudioRecognizerDelegate {
+    func audioRecognized(_ recognizer: ARAudioRecognizer!) {
+        print("audioRecognized")
+    }
+    
+    func audioLevelUpdated(_ recognizer: ARAudioRecognizer!, averagePower: Float, peakPower: Float) {
+//        print("peakPower: \(peakPower + 50)")
+        let peak = averagePower + 50
+        
+        let scale = Int(peak / 10)
+        if scale > 0 {
+            self.talkWave.transform = defaultTransform!
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                self.talkWave.transform = self.talkWave.transform.scaledBy(x: CGFloat(scale) + 1, y: CGFloat(scale) + 1)
+                }, completion: nil)
+        }
+        print(scale)
+        
+    }
+    
+//    func audioLevelUpdated(_ recognizer: ARAudioRecognizer!, level lowPassResults: Float) {
+////        print("lowpassresultes: \(lowPassResults)")
+//        let peak = lowPassResults
+//        
+//        var scale: CGFloat = 0
+//        
+//        
+//        
+//        if (peak > 0.8) {
+//            scale = 6
+//        } else if (peak > 0.6) {
+//            scale = 5
+//        } else if (peak > 0.4) {
+//            scale = 4
+//        } else if (peak > 0.2) {
+//            scale = 3
+//        } else if (peak > 0.1) {
+//            scale = 2
+//        } else{
+//            scale = 1
+//        }
+//        
+//        self.talkWave.transform = defaultTransform!
+//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+//            self.talkWave.transform = self.talkWave.transform.scaledBy(x: scale, y: scale)
+//            }, completion: nil)
+//    }
 }
 

@@ -14,6 +14,7 @@
 		B91AC8721DC84422000227E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8711DC84422000227E5 /* Assets.xcassets */; };
 		B91AC8751DC84422000227E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC8731DC84422000227E5 /* LaunchScreen.storyboard */; };
 		B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC87C1DC8642D000227E5 /* HudView.swift */; };
+		B947236A1DE4726B00ADACD8 /* ARAudioRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94723681DE4726B00ADACD8 /* ARAudioRecognizer.m */; };
 		B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97160021DCB05F500CCA7B7 /* SocketViewController.swift */; };
 		B97160051DCB0A1800CCA7B7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B97160041DCB0A1800CCA7B7 /* Podfile */; };
 		B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */; };
@@ -35,6 +36,9 @@
 		B91AC8741DC84422000227E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B91AC8761DC84422000227E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B91AC87C1DC8642D000227E5 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		B94723671DE4726B00ADACD8 /* ARAudioRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAudioRecognizer.h; sourceTree = "<group>"; };
+		B94723681DE4726B00ADACD8 /* ARAudioRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAudioRecognizer.m; sourceTree = "<group>"; };
+		B94723691DE4726B00ADACD8 /* ARAudioRecognizerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAudioRecognizerDelegate.h; sourceTree = "<group>"; };
 		B96DED9A1DCB11030032924A /* VoiceRecordDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VoiceRecordDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		B97160021DCB05F500CCA7B7 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketViewController.swift; sourceTree = "<group>"; };
 		B97160041DCB0A1800CCA7B7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -85,6 +89,9 @@
 		B91AC8661DC84422000227E5 /* VoiceRecordDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B94723671DE4726B00ADACD8 /* ARAudioRecognizer.h */,
+				B94723681DE4726B00ADACD8 /* ARAudioRecognizer.m */,
+				B94723691DE4726B00ADACD8 /* ARAudioRecognizerDelegate.h */,
 				B91AC8671DC84422000227E5 /* AppDelegate.swift */,
 				B91AC8691DC84422000227E5 /* RecordViewController.swift */,
 				B9AFB0741DC8709A0071A0FC /* FilesTableViewController.swift */,
@@ -243,6 +250,7 @@
 				B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */,
 				B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */,
 				B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */,
+				B947236A1DE4726B00ADACD8 /* ARAudioRecognizer.m in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
 				B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */,
 			);
