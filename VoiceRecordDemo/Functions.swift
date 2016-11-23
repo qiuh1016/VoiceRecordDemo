@@ -73,6 +73,7 @@ func playSystemSound(name: String, suffix: String){
     let baseURL = NSURL(fileURLWithPath: path!)
     AudioServicesCreateSystemSoundID(baseURL, &soundID)
     AudioServicesPlaySystemSound(soundID)
+    
 }
 
 func showDate() -> String {

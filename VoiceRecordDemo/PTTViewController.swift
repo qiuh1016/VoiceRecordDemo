@@ -16,7 +16,7 @@ private let kTalkButtonToBottomSpace: CGFloat = 5
 private let kTalkButtonWidth: CGFloat = 68
 private let kTalkWaveWidth: CGFloat = 60
 
-private let kButtonViewBackgroundColor = UIColor.lightGray //UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.3)
+private let kButtonViewBackgroundColor = UIColor.lightGray   //UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.2)
 private let kRecordViewBackgroundColor = UIColor.colorFromRGB(rgbValue: 0xB2D4FD, alpha: 1)  //UIColor.colorFromRGB(rgbValue: 0x9DB6DF, alpha: 1) //UIColor.green
 private let kStateLabelPrepareColor = UIColor.colorFromRGB(rgbValue: 0xFFD600, alpha: 1)
 private let kStateLabelSpeakColor = UIColor.colorFromRGB(rgbValue: 0x46FCBF, alpha: 1)
@@ -74,7 +74,6 @@ class PTTViewController: UIViewController {
         
     }
 
-    
     func initView() {
         
         //button view
@@ -110,6 +109,7 @@ class PTTViewController: UIViewController {
         stateLabel.text = "Press button to speak"
         stateLabel.textColor = UIColor.white
         stateLabel.textAlignment = .center
+        stateLabel.alpha = 0
         buttonView.addSubview(stateLabel)
         
         self.view.addSubview(buttonView)
@@ -121,6 +121,8 @@ class PTTViewController: UIViewController {
             width: width,
             height: height - kButtonViewHeight))
         recordView.backgroundColor = kRecordViewBackgroundColor
+        self.view.addSubview(recordView)
+        self.view.bringSubview(toFront: buttonView)
         
         talkButton = UIButton(type: .custom)
         talkButton.frame = CGRect(
@@ -144,26 +146,21 @@ class PTTViewController: UIViewController {
         recordView.bringSubview(toFront: talkButton)
         
         //voice wave 
-        let voiceWaveParentView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 320))
+        let voiceWaveParentView = UIView(frame: CGRect(x: 0, y: (recordView.bounds.height - 320 - kTalkWaveWidth) / 2, width: width, height: 320))
         recordView.addSubview(voiceWaveParentView)
         
-        
         voiceWaveView = YSCNewVoiceWaveView()
-//        voiceWaveView.setVoiceWaveNumber(6)
-        voiceWaveView.startVoiceWave()
+        voiceWaveView.setVoiceWaveNumber(6)
         voiceWaveView.show(inParentView: voiceWaveParentView)
         voiceWaveView.backgroundColor = UIColor.clear
+        voiceWaveView.startVoiceWave()
         
         
         let updateVolumeTimer = Timer(timeInterval: 0.1, target: self, selector: #selector(PTTViewController.updateVolume), userInfo: nil, repeats: true)
         RunLoop.current.add(updateVolumeTimer, forMode: .commonModes)
         
         
-        self.view.addSubview(recordView)
-        self.view.bringSubview(toFront: buttonView)
-
     }
-    
     
     func directoryURL() -> URL? {
         
@@ -194,7 +191,7 @@ class PTTViewController: UIViewController {
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)   //AVAudioSessionCategoryPlayAndRecord
             try audioRecorder = AVAudioRecorder(url: self.directoryURL()!, settings: recordSettings)//初始化实例
             audioRecorder.prepareToRecord()//准备录音
             audioRecorder.isMeteringEnabled = true
@@ -211,43 +208,63 @@ class PTTViewController: UIViewController {
             }
         }
         
+        self.stateLabel.text = "Start speaking"
+        self.stateLabel.textColor = kStateLabelSpeakColor
   
     }
-    
+
     func stopRecord() {
         
+        
+        
+        audioRecorder.stop()
+        audioRecorder = nil
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            playSystemSound(name: "talkroom_press", suffix: "mp3")
+        } catch  {
+            
+        }
+        
         print("timer invalidate")
+        
         detectTimer?.invalidate()
         detectTimer = nil
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-            self.talkWave.transform = self.talkWaveDefaultTransform
-            }, completion: nil)
+//        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+//            self.talkWave.transform = self.talkWaveDefaultTransform
+//            }, completion: nil)
         
-        recordStopTime = Date().timeIntervalSince1970
+//        recordStopTime = Date().timeIntervalSince1970
         
-        if recordStopTime - recordStartTime < kMinRecordTime {
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            let alert = UIAlertController(title: "提示", message: "录制时间太短，未能保存文件!", preferredStyle: .alert)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
+//        if recordStopTime - recordStartTime < kMinRecordTime {
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            let alert = UIAlertController(title: "提示", message: "录制时间太短，未能保存文件!", preferredStyle: .alert)
+//            alert.addAction(okAction)
+//            present(alert, animated: true, completion: nil)
+//        }
         
-        audioRecorder.stop()
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setActive(false)
-            print("stop!!")
-            audioRecorder = nil
-        } catch {
-        }
         
-        if recordStopTime - recordStartTime < kMinRecordTime {
-            audioRecorder.deleteRecording()
-        }
+//        let audioSession = AVAudioSession.sharedInstance()
+//        do {
+//            try audioSession.setActive(false)
+//            print("stop!!")
+//            
+//        } catch {
+//        }
+        
+//        if recordStopTime - recordStartTime < kMinRecordTime {
+//            audioRecorder.deleteRecording()
+//        }
+        
+        
+        
+        
+        
+        
     }
     
-    @IBAction func startPlaying(_ sender: AnyObject) {
+    func startPlaying() {
         if (!audioRecorder.isRecording){
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
@@ -259,7 +276,7 @@ class PTTViewController: UIViewController {
         }
     }
     
-    @IBAction func pausePlaying(_ sender: AnyObject) {
+    func pausePlaying() {
         if (!audioRecorder.isRecording){
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
@@ -270,26 +287,35 @@ class PTTViewController: UIViewController {
         }
     }
 
-    
     func talkButtonTouchDown() {
-        
-        Thread(target: self, selector: #selector(PTTViewController.startRecord), object: nil).start()
-        
-        detectTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(PTTViewController.updateVolume), userInfo: nil, repeats: true)
-        detectTimer!.fire()
-        
-        talkOver = false
-        playSystemSound(name: "talkroom_begin", suffix: "mp3")
         
         //state label
         stateLabel.text = "Preparing..."
         stateLabel.textColor = kStateLabelPrepareColor
-        afterDelay(0.4, closure: {
-            if !self.talkOver {
-                self.stateLabel.text = "Start speaking"
-                self.stateLabel.textColor = kStateLabelSpeakColor
-            }
+//        afterDelay(0.3, closure: {
+//            if !self.talkOver {
+//                self.stateLabel.text = "Start speaking"
+//                self.stateLabel.textColor = kStateLabelSpeakColor
+//            }
+//        })
+    
+        //sound
+        playSystemSound(name: "talkroom_press", suffix: "mp3")
+        afterDelay(0.2, closure: {
+            playSystemSound(name: "talkroom_begin", suffix: "mp3")
         })
+        
+        afterDelay(0.4, closure: {
+            Thread(target: self, selector: #selector(PTTViewController.startRecord), object: nil).start()
+        })
+        
+        
+//        detectTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(PTTViewController.updateVolume), userInfo: nil, repeats: true)
+//        detectTimer!.fire()
+//        
+        talkOver = false
+
+
         
         //test talk wave
 //        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
@@ -299,6 +325,17 @@ class PTTViewController: UIViewController {
 //                    self.talkWave.transform = self.talkWaveDefaultTransform
 //                    }, completion: nil)
 //        })
+    }
+    
+
+    func talkButtonTouchUpInsideAndOutside() {
+        playSystemSound(name: "talkroom_press", suffix: "mp3")
+        
+        Thread(target: self, selector: #selector(PTTViewController.stopRecord), object: nil).start()
+        
+        talkOver = true
+        stateLabel.text = "Press button to speak"
+        stateLabel.textColor = UIColor.white
     }
     
     var lastScale: CGFloat = 1
@@ -314,32 +351,23 @@ class PTTViewController: UIViewController {
             
             print(normalizedValue)
             
-//            let averagePower = audioRecorder.averagePower(forChannel: 0)
-//            let peakPower = audioRecorder.averagePower(forChannel: 0)
-//            let scale = Int((peakPower + 160) / 16) - 2
-//            
-//            
-//            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-//                self.talkWave.transform = self.talkWave.transform.scaledBy(x: CGFloat(scale) / self.lastScale, y: CGFloat(scale) / self.lastScale)
-//                }, completion: { Void in
-//                    self.lastScale = CGFloat(scale)
-//            })
-////            print("averagePower: \(averagePower), peakPower: \(peakPower)")
-//            print("scale: \(scale)")
+            //            let averagePower = audioRecorder.averagePower(forChannel: 0)
+            //            let peakPower = audioRecorder.averagePower(forChannel: 0)
+            //            let scale = Int((peakPower + 160) / 16) - 2
+            //
+            //
+            //            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            //                self.talkWave.transform = self.talkWave.transform.scaledBy(x: CGFloat(scale) / self.lastScale, y: CGFloat(scale) / self.lastScale)
+            //                }, completion: { Void in
+            //                    self.lastScale = CGFloat(scale)
+            //            })
+            ////            print("averagePower: \(averagePower), peakPower: \(peakPower)")
+            //            print("scale: \(scale)")
             
         }
         
     }
 
-    func talkButtonTouchUpInsideAndOutside() {
-        playSystemSound(name: "talkroom_press", suffix: "mp3")
-        
-        Thread(target: self, selector: #selector(PTTViewController.stopRecord), object: nil).start()
-        
-        talkOver = true
-        stateLabel.text = "Press button to speak"
-        stateLabel.textColor = UIColor.white
-    }
     
     func foldButtonTapped() {
         
@@ -347,8 +375,10 @@ class PTTViewController: UIViewController {
             self.foldButton.transform = self.foldButton.transform.rotated(by: CGFloat(M_PI))
             if self.isRecordViewEnable {
                 self.recordView.center.y -= self.recordView.frame.height
+                self.stateLabel.alpha = 0
             } else {
                 self.recordView.center.y += self.recordView.frame.height
+                self.stateLabel.alpha = 1
             }
             }, completion: { Void in
                 self.isRecordViewEnable = !self.isRecordViewEnable
@@ -360,6 +390,16 @@ class PTTViewController: UIViewController {
         self.shutButton.setBackgroundImage(isShuted ? #imageLiteral(resourceName: "shut_button_red") : #imageLiteral(resourceName: "shut_button_green"), for: .normal)
     }
 
+    
+    func playSound(name: String, suffix: String) {
+        do {
+            let path = Bundle.main.path(forResource: name, ofType: suffix)
+            let baseURL = URL(fileURLWithPath: path!)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try audioPlayer = AVAudioPlayer(contentsOf: baseURL)
+        } catch {
+        }
+    }
 
     /*
     // MARK: - Navigation

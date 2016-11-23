@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B902E6D51DE5C16300F08C01 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902E6D01DE5C16300F08C01 /* ysocket.swift */; };
+		B902E6D61DE5C16300F08C01 /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = B902E6D11DE5C16300F08C01 /* ytcpsocket.c */; };
+		B902E6D71DE5C16300F08C01 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902E6D21DE5C16300F08C01 /* ytcpsocket.swift */; };
+		B902E6D81DE5C16300F08C01 /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = B902E6D31DE5C16300F08C01 /* yudpsocket.c */; };
+		B902E6D91DE5C16300F08C01 /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902E6D41DE5C16300F08C01 /* yudpsocket.swift */; };
 		B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC8671DC84422000227E5 /* AppDelegate.swift */; };
 		B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91AC8691DC84422000227E5 /* RecordViewController.swift */; };
 		B91AC86D1DC84422000227E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91AC86B1DC84422000227E5 /* Main.storyboard */; };
@@ -39,6 +44,11 @@
 		0E506B6F57E815B42E6BCBFF /* Pods_VoiceRecordDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceRecordDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E99621A1660CE5900AE064 /* Pods-VoiceRecordDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceRecordDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5EC5641103F4EAD230C375BF /* Pods-VoiceRecordDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceRecordDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoiceRecordDemo/Pods-VoiceRecordDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		B902E6D01DE5C16300F08C01 /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
+		B902E6D11DE5C16300F08C01 /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		B902E6D21DE5C16300F08C01 /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
+		B902E6D31DE5C16300F08C01 /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		B902E6D41DE5C16300F08C01 /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yudpsocket.swift; sourceTree = "<group>"; };
 		B91AC8641DC84422000227E5 /* VoiceRecordDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceRecordDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91AC8671DC84422000227E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91AC8691DC84422000227E5 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +108,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B902E6CF1DE5C14700F08C01 /* ysocket */ = {
+			isa = PBXGroup;
+			children = (
+				B902E6D01DE5C16300F08C01 /* ysocket.swift */,
+				B902E6D11DE5C16300F08C01 /* ytcpsocket.c */,
+				B902E6D21DE5C16300F08C01 /* ytcpsocket.swift */,
+				B902E6D31DE5C16300F08C01 /* yudpsocket.c */,
+				B902E6D41DE5C16300F08C01 /* yudpsocket.swift */,
+			);
+			name = ysocket;
+			sourceTree = "<group>";
+		};
 		B91AC85B1DC84422000227E5 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +169,7 @@
 				B91AC87C1DC8642D000227E5 /* HudView.swift */,
 				B9AFB0761DC968560071A0FC /* MyButton.swift */,
 				B9B3FED71DC97EEB002CCD5B /* Functions.swift */,
+				B902E6CF1DE5C14700F08C01 /* ysocket */,
 				B944535F1DE589FE00844385 /* VoiceWave */,
 				B944535B1DE588C000844385 /* MicrophoneWave */,
 				B94453591DE5705300844385 /* AudioRecognizer */,
@@ -355,15 +378,20 @@
 				B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */,
 				B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */,
 				B944536A1DE58A1700844385 /* YSCVoiceWaveView.m in Sources */,
+				B902E6D81DE5C16300F08C01 /* yudpsocket.c in Sources */,
 				B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */,
 				B94453691DE58A1700844385 /* YSCVoiceLoadingCircleView.m in Sources */,
+				B902E6D91DE5C16300F08C01 /* yudpsocket.swift in Sources */,
 				B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */,
 				B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */,
 				B94453681DE58A1700844385 /* YSCNewVoiceWaveView.m in Sources */,
 				B944535E1DE588D700844385 /* YSCMicrophoneWaveView.m in Sources */,
 				B944534B1DE5379F00844385 /* PTTViewController.swift in Sources */,
+				B902E6D51DE5C16300F08C01 /* ysocket.swift in Sources */,
 				B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */,
+				B902E6D71DE5C16300F08C01 /* ytcpsocket.swift in Sources */,
 				B947236A1DE4726B00ADACD8 /* ARAudioRecognizer.m in Sources */,
+				B902E6D61DE5C16300F08C01 /* ytcpsocket.c in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
 				B944536B1DE58A1700844385 /* YSCVolumeQueue.m in Sources */,
 				B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */,
