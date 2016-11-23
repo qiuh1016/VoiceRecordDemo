@@ -8,11 +8,13 @@
 
 import UIKit
 import AVFoundation
+import MapKit
 
 private let kMinRecordTime = 0.5
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
 
@@ -22,6 +24,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var talkButton: UIButton!
     @IBOutlet weak var talkWave: UIImageView!
     
+    @IBOutlet weak var shutButton: UIButton!
+    @IBOutlet weak var foldButton: UIButton!
+    @IBOutlet weak var recordView: UIView!
+    
     var backColor: UIColor!
     
     var recordStartTime: TimeInterval!
@@ -30,6 +36,29 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var recordCancel = false
     
     var audioRecognizer = ARAudioRecognizer()
+    
+    var isFold = true
+    var toFoldConstraint: CGFloat!
+    @IBOutlet weak var recordViewToBottomConstraint: NSLayoutConstraint!
+    
+    @IBAction func foldButtonTapped(_ sender: AnyObject) {
+        foldButton.isEnabled = false
+        
+        if isFold {
+            recordViewToBottomConstraint.constant = 0
+        } else {
+            recordViewToBottomConstraint.constant = toFoldConstraint
+        }
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            self.foldButton.transform = self.foldButton.transform.rotated(by: CGFloat(M_PI))
+            self.view.layoutIfNeeded()
+            }, completion: { Void in
+                self.foldButton.isEnabled = true
+                self.isFold = !self.isFold
+        })
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +75,40 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         backColor = recordButton.backgroundColor
         recordButton.setTitleColor(UIColor.colorFromRGB(rgbValue: 0x000000, alpha: 0.6), for: .normal)
         
+        
+        
         audioRecognizer = ARAudioRecognizer.init(sensitivity: 0.7, frequency: 0.03)
         audioRecognizer.delegate = self
         
         defaultTransform = self.talkWave.transform
+        
+        
+        
+        //mapView
+        let center = CLLocationCoordinate2D(latitude: 30.5, longitude: 121.3)
+        mapView.setCenter(center, animated: false)
+        let span = MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: false)
+        mapView.showsCompass = false
+        mapView.isRotateEnabled = false
+        mapView.isPitchEnabled = false
+        
+        //view
+        toFoldConstraint = self.view.bounds.height + 20 - 100
+//        recordViewToBottomConstraint.constant = toFoldConstraint
+//        self.view.layoutIfNeeded()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func directoryURL() -> URL? {
@@ -262,6 +321,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 })
         })
     }
+
+    
 
     
     

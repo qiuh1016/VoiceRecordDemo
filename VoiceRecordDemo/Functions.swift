@@ -67,9 +67,9 @@ func realLocation(location: CLLocationCoordinate2D) -> CLLocationCoordinate2D{
     return realLocation
 }
 
-func playSystemSound(){
+func playSystemSound(name: String, suffix: String){
     var soundID:SystemSoundID = 0
-    let path = Bundle.main.path(forResource: "noticeMusic", ofType: "wav")
+    let path = Bundle.main.path(forResource: name, ofType: suffix)
     let baseURL = NSURL(fileURLWithPath: path!)
     AudioServicesCreateSystemSoundID(baseURL, &soundID)
     AudioServicesPlaySystemSound(soundID)
