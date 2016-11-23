@@ -8,3 +8,9 @@
 
 #import "ARAudioRecognizer.h"
 #import "ARAudioRecognizerDelegate.h"
+
+#import "YSCMicrophoneWaveView.h"
+#import "YSCNewVoiceWaveView.h"
+#import "YSCVoiceLoadingCircleView.h"
+#import "YSCVoiceWaveView.h"
+#import "YSCVolumeQueue.h"

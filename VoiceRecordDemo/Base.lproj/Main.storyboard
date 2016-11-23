@@ -19,6 +19,16 @@
                     <view key="view" contentMode="scaleToFill" id="S0v-sr-QMz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-Ac-Iqp">
+                                <frame key="frameInset" minX="321" minY="629" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FILE"/>
+                                <connections>
+                                    <segue destination="a6N-Qi-HM2" kind="show" id="XAG-2P-7jH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -40,6 +50,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vss-iZ-4rd">
                                 <frame key="frameInset" width="1000" height="1000"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1000" id="uu8-mR-dMl"/>
+                                </constraints>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu2-eW-89p">
                                 <frame key="frameInset" minX="237" minY="238" width="30" height="30"/>
@@ -98,7 +111,7 @@
                                             <constraint firstAttribute="width" constant="35" id="hru-dg-F2a"/>
                                             <constraint firstAttribute="width" secondItem="pwp-C1-hVf" secondAttribute="height" multiplier="1:1" id="q0V-4o-J2Z"/>
                                         </constraints>
-                                        <state key="normal" image="shut_button"/>
+                                        <state key="normal" image="shut_button_green"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9j6-fR-Z18">
                                         <constraints>
@@ -155,7 +168,6 @@
                             <constraint firstItem="vss-iZ-4rd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="67M-Ng-AsX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ayS-oe-GIU" secondAttribute="bottom" id="G5y-9T-ZLi"/>
                             <constraint firstItem="vss-iZ-4rd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IJc-CA-XPG"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vss-iZ-4rd" secondAttribute="bottom" id="ORO-xg-axi"/>
                             <constraint firstItem="ayS-oe-GIU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="WGQ-q8-WN8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xse-Ba-SJd" secondAttribute="trailing" constant="-16" id="XWn-ga-c7T"/>
                             <constraint firstItem="ayS-oe-GIU" firstAttribute="top" secondItem="Xse-Ba-SJd" secondAttribute="bottom" id="bY8-Uk-s5h"/>
@@ -219,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrv-eG-m31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="38"/>
+            <point key="canvasLocation" x="1780" y="-701"/>
         </scene>
         <!--Socket View Controller-->
         <scene sceneID="Eeq-BL-N38">
@@ -266,8 +278,11 @@
     </scenes>
     <resources>
         <image name="fold_button" width="43" height="43"/>
-        <image name="shut_button" width="43" height="43"/>
+        <image name="shut_button_green" width="43" height="43"/>
         <image name="talk_button" width="68" height="68"/>
         <image name="talk_wave" width="237" height="237"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XAG-2P-7jH"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,11 @@
 		B94453511DE56EE600844385 /* talkroom_press.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B94453501DE56EE600844385 /* talkroom_press.mp3 */; };
 		B94453541DE5700A00844385 /* talkroom_sasasa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B94453521DE5700A00844385 /* talkroom_sasasa.mp3 */; };
 		B94453551DE5700A00844385 /* talkroom_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B94453531DE5700A00844385 /* talkroom_up.mp3 */; };
+		B944535E1DE588D700844385 /* YSCMicrophoneWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944535D1DE588D700844385 /* YSCMicrophoneWaveView.m */; };
+		B94453681DE58A1700844385 /* YSCNewVoiceWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94453611DE58A1700844385 /* YSCNewVoiceWaveView.m */; };
+		B94453691DE58A1700844385 /* YSCVoiceLoadingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94453631DE58A1700844385 /* YSCVoiceLoadingCircleView.m */; };
+		B944536A1DE58A1700844385 /* YSCVoiceWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94453651DE58A1700844385 /* YSCVoiceWaveView.m */; };
+		B944536B1DE58A1700844385 /* YSCVolumeQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B94453671DE58A1700844385 /* YSCVolumeQueue.m */; };
 		B947236A1DE4726B00ADACD8 /* ARAudioRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94723681DE4726B00ADACD8 /* ARAudioRecognizer.m */; };
 		B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97160021DCB05F500CCA7B7 /* SocketViewController.swift */; };
 		B97160051DCB0A1800CCA7B7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B97160041DCB0A1800CCA7B7 /* Podfile */; };
@@ -49,6 +54,16 @@
 		B94453501DE56EE600844385 /* talkroom_press.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = talkroom_press.mp3; sourceTree = "<group>"; };
 		B94453521DE5700A00844385 /* talkroom_sasasa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = talkroom_sasasa.mp3; sourceTree = "<group>"; };
 		B94453531DE5700A00844385 /* talkroom_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = talkroom_up.mp3; sourceTree = "<group>"; };
+		B944535C1DE588D700844385 /* YSCMicrophoneWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCMicrophoneWaveView.h; sourceTree = "<group>"; };
+		B944535D1DE588D700844385 /* YSCMicrophoneWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCMicrophoneWaveView.m; sourceTree = "<group>"; };
+		B94453601DE58A1700844385 /* YSCNewVoiceWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCNewVoiceWaveView.h; sourceTree = "<group>"; };
+		B94453611DE58A1700844385 /* YSCNewVoiceWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCNewVoiceWaveView.m; sourceTree = "<group>"; };
+		B94453621DE58A1700844385 /* YSCVoiceLoadingCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCVoiceLoadingCircleView.h; sourceTree = "<group>"; };
+		B94453631DE58A1700844385 /* YSCVoiceLoadingCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCVoiceLoadingCircleView.m; sourceTree = "<group>"; };
+		B94453641DE58A1700844385 /* YSCVoiceWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCVoiceWaveView.h; sourceTree = "<group>"; };
+		B94453651DE58A1700844385 /* YSCVoiceWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCVoiceWaveView.m; sourceTree = "<group>"; };
+		B94453661DE58A1700844385 /* YSCVolumeQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCVolumeQueue.h; sourceTree = "<group>"; };
+		B94453671DE58A1700844385 /* YSCVolumeQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCVolumeQueue.m; sourceTree = "<group>"; };
 		B94723671DE4726B00ADACD8 /* ARAudioRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAudioRecognizer.h; sourceTree = "<group>"; };
 		B94723681DE4726B00ADACD8 /* ARAudioRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAudioRecognizer.m; sourceTree = "<group>"; };
 		B94723691DE4726B00ADACD8 /* ARAudioRecognizerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAudioRecognizerDelegate.h; sourceTree = "<group>"; };
@@ -132,6 +147,8 @@
 				B91AC87C1DC8642D000227E5 /* HudView.swift */,
 				B9AFB0761DC968560071A0FC /* MyButton.swift */,
 				B9B3FED71DC97EEB002CCD5B /* Functions.swift */,
+				B944535F1DE589FE00844385 /* VoiceWave */,
+				B944535B1DE588C000844385 /* MicrophoneWave */,
 				B94453591DE5705300844385 /* AudioRecognizer */,
 			);
 			name = Util;
@@ -169,6 +186,30 @@
 				B96DED9A1DCB11030032924A /* VoiceRecordDemo-Bridging-Header.h */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		B944535B1DE588C000844385 /* MicrophoneWave */ = {
+			isa = PBXGroup;
+			children = (
+				B944535C1DE588D700844385 /* YSCMicrophoneWaveView.h */,
+				B944535D1DE588D700844385 /* YSCMicrophoneWaveView.m */,
+			);
+			name = MicrophoneWave;
+			sourceTree = "<group>";
+		};
+		B944535F1DE589FE00844385 /* VoiceWave */ = {
+			isa = PBXGroup;
+			children = (
+				B94453601DE58A1700844385 /* YSCNewVoiceWaveView.h */,
+				B94453611DE58A1700844385 /* YSCNewVoiceWaveView.m */,
+				B94453621DE58A1700844385 /* YSCVoiceLoadingCircleView.h */,
+				B94453631DE58A1700844385 /* YSCVoiceLoadingCircleView.m */,
+				B94453641DE58A1700844385 /* YSCVoiceWaveView.h */,
+				B94453651DE58A1700844385 /* YSCVoiceWaveView.m */,
+				B94453661DE58A1700844385 /* YSCVolumeQueue.h */,
+				B94453671DE58A1700844385 /* YSCVolumeQueue.m */,
+			);
+			name = VoiceWave;
 			sourceTree = "<group>";
 		};
 		C767CB42459495D969E49C16 /* Frameworks */ = {
@@ -313,13 +354,18 @@
 			files = (
 				B91AC87D1DC8642D000227E5 /* HudView.swift in Sources */,
 				B91AC8701DC84422000227E5 /* VoiceRecordDemo.xcdatamodeld in Sources */,
+				B944536A1DE58A1700844385 /* YSCVoiceWaveView.m in Sources */,
 				B9AFB0751DC8709A0071A0FC /* FilesTableViewController.swift in Sources */,
+				B94453691DE58A1700844385 /* YSCVoiceLoadingCircleView.m in Sources */,
 				B9B3FED81DC97EEB002CCD5B /* Functions.swift in Sources */,
 				B91AC86A1DC84422000227E5 /* RecordViewController.swift in Sources */,
+				B94453681DE58A1700844385 /* YSCNewVoiceWaveView.m in Sources */,
+				B944535E1DE588D700844385 /* YSCMicrophoneWaveView.m in Sources */,
 				B944534B1DE5379F00844385 /* PTTViewController.swift in Sources */,
 				B97160031DCB05F500CCA7B7 /* SocketViewController.swift in Sources */,
 				B947236A1DE4726B00ADACD8 /* ARAudioRecognizer.m in Sources */,
 				B91AC8681DC84422000227E5 /* AppDelegate.swift in Sources */,
+				B944536B1DE58A1700844385 /* YSCVolumeQueue.m in Sources */,
 				B9AFB0771DC968560071A0FC /* MyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
