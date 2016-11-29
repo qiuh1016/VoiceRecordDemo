@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-VoiceRecordDemo.xcscheme</key>
+		<key>CocoaAsyncSocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Socket.IO-Client-Swift.xcscheme</key>
+		<key>Pods-VoiceRecordDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>38620E0429575EFA01ADE00AFAAE7F21</key>
+		<key>8D6482C20B7A764556072A3781F7300B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFBA554D03FA56F79583ADA3410C115D</key>
+		<key>B37E19CA872A7535725D1E1946E5C271</key>
 		<dict>
 			<key>primary</key>
 			<true/>
