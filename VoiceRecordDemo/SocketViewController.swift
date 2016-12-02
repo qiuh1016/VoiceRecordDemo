@@ -64,6 +64,127 @@ import CocoaAsyncSocket
 //    }
 //}
 
+//class SocketViewController: UIViewController {
+//    
+//    @IBOutlet weak var textField: UITextField!
+//    @IBOutlet weak var sendButton: UIButton!
+//    
+//    let PORT: UInt32 = 9999
+//    let HOST: CFString = "192.168.0.138" as CFString
+//    let BUFFER_SIZE = 1024
+//    
+//    var flag = -1
+//    var inputStream: InputStream?
+//    var outputStream: OutputStream?
+//    
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        
+//        
+//    }
+//    
+//    func initNetworkCommunication() {
+//        var readStream: Unmanaged<CFReadStream>?
+//        var writeStream: Unmanaged<CFWriteStream>?
+//        
+//        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+//                                           HOST, PORT, &readStream, &writeStream)
+//        
+//        self.inputStream = readStream!.takeUnretainedValue()
+//        self.inputStream!.delegate = self
+//        self.inputStream!.schedule(in: RunLoop.current, forMode: .commonModes)
+//        
+//        self.inputStream!.open()
+//        
+//        self.outputStream = writeStream!.takeUnretainedValue()
+//        self.outputStream!.delegate = self
+//        self.outputStream!.schedule(in: RunLoop.current, forMode: .commonModes)
+//        
+//        self.outputStream!.open()
+//    }
+//    
+//    @IBAction func connect(_ sender: AnyObject) {
+//        flag = 1
+//        initNetworkCommunication()
+//    }
+//    
+//    @IBAction func send(_ sender: AnyObject) {
+//        flag = 0
+//        initNetworkCommunication()
+//    }
+//    
+//}
+//
+//extension SocketViewController: StreamDelegate {
+//  
+//    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+//        var event: String?
+//        switch eventCode {
+//        case Stream.Event.openCompleted:
+//            event = "openCompleted"
+//        case Stream.Event.hasBytesAvailable:
+//            event = "hasBytesAvailable"
+//            if flag == 1 && aStream == self.inputStream {
+//                let input = NSMutableData()
+//                let buf = UnsafeMutablePointer<UInt8>.allocate(capacity: BUFFER_SIZE)
+//                var len = 0
+//                while self.inputStream!.hasBytesAvailable {
+//                    len = self.inputStream!.read(buf, maxLength: BUFFER_SIZE)
+//                    if len > 0 {
+//                        input.append(buf, length: len)
+//                    }
+//                }
+//                let resultString = String(data: input as Data, encoding: .utf8)
+//                print(resultString)
+//            }
+//        case Stream.Event.hasSpaceAvailable:
+//            event = "hasSpaceAvailable"
+//            if flag == 0 && aStream == self.outputStream {
+//                let sendString = "i am ios socket"
+//                var data = sendString.data(using: .utf8, allowLossyConversion: true)!
+////                self.outputStream!.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.count)
+//                
+//                data.withUnsafeBytes({ (p: UnsafePointer<UInt8>) -> Void in
+//                    self.outputStream!.write(p, maxLength: data.count)
+//                })
+//            
+//                self.close()
+//            }
+//        case Stream.Event.errorOccurred:
+//            event = "errorOccurred"
+//            self.close()
+//        case Stream.Event.endEncountered:
+//            event = "endEncountered"
+//        default:
+//            event = "unknown"
+//            self.close()
+//        }
+//        print(event)
+//    }
+//    
+//    func close() {
+//        self.inputStream!.close()
+//        self.inputStream!.remove(from: RunLoop.current, forMode: .commonModes)
+//        self.inputStream!.delegate = nil
+//        
+//        self.outputStream!.close()
+//        self.outputStream!.remove(from: RunLoop.current, forMode: .commonModes)
+//        self.outputStream!.delegate = nil
+//    }
+//    
+//    
+//}
+
+
+
+
+
+
+
+
+
 class SocketViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
@@ -80,9 +201,6 @@ class SocketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
     
     func initNetworkCommunication() {
@@ -113,17 +231,19 @@ class SocketViewController: UIViewController {
     @IBAction func send(_ sender: AnyObject) {
         flag = 0
         initNetworkCommunication()
+ 
     }
     
 }
 
 extension SocketViewController: StreamDelegate {
-  
+    
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         var event: String?
         switch eventCode {
         case Stream.Event.openCompleted:
             event = "openCompleted"
+            flag = 1
         case Stream.Event.hasBytesAvailable:
             event = "hasBytesAvailable"
             if flag == 1 && aStream == self.inputStream {
@@ -144,13 +264,10 @@ extension SocketViewController: StreamDelegate {
             if flag == 0 && aStream == self.outputStream {
                 let sendString = "i am ios socket"
                 var data = sendString.data(using: .utf8, allowLossyConversion: true)!
-//                self.outputStream!.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.count)
-                
                 data.withUnsafeBytes({ (p: UnsafePointer<UInt8>) -> Void in
                     self.outputStream!.write(p, maxLength: data.count)
                 })
-            
-                self.close()
+//                self.close()
             }
         case Stream.Event.errorOccurred:
             event = "errorOccurred"
@@ -175,16 +292,8 @@ extension SocketViewController: StreamDelegate {
     }
     
     
+    
 }
-
-
-
-
-
-
-
-
-
 
 
 
